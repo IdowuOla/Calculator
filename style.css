@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@300;400;500&display=swap');
+
+:root {
+    --bg: #f5f0eb;
+    --surface: #ffffff;
+    --ink: #1a1814;
+    --muted: #9e9790;
+    --accent: #c8502a;
+    --accent-light: #f5e8e3;
+    --border: #e2ddd8;
+    --btn-bg: #f0ebe4;
+    --btn-hover: #e8dfd6;
+    --operators-bg: #1a1814;
+    --opeartor-text: #ffffff;
+    --equals-bg: #c8502a;
+    --equals-text: #ffffff;
+}
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+
+body {
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+}
+
+.calculator {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    width: 320px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1),  0 4px 18px rgba(0,0,0,0.06);
+}
+
+/* display */
+.display {
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 20px 20px 14px;
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.display-expression {
+    font-size: 13px;
+    color: var(--muted);
+    min-height: 18px;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-align: right;
+}
+.display-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    color: (--ink);
+    line-height: 1;
+    word-break: break-all;
+   text-align: right;
+   transition: font-size 0.15s;
+}
+.display-value.small {font-size: 28px;}
+.display-value.vsmall {font-size: 20px;}
+.display-value.error {font-size: 16px; color: var(--accent);}
+
+/*---Button Grid --- */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+button {
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+    font-weight: 800;
+    height: 58px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    background: var(--btn-bg);
+    color: var(--ink);
+    letter-spacing: 0.3px;
+}
+button:hover {background: var(--btn-hover); transform: translate(-1px);}
+button:active {transform: translate(1px); opacity: 0.85; }
+
+/* wide button spanning 2 columns */
+button.wide {grid-column: span 2;}
+
+/* clear button */
+button.clear {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+button.clear:hover {
+    background: #f0d8d0;
+}
+
+/* Backspace button */
+button.back {
+    background: var(--btn-bg);
+    color: var(--muted);
+    font-size: 30px;
+}
+/* operator buttons */
+button.operator {
+    background: var(--operators-bg);
+    color: var(--opeartor-text);
+    font-size: 20px;
+}
+button.operator:hover {
+    background: #2e2c28;
+}
+button.operator.active-op {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* Equals button */
+button.equals {
+    background: var(--equals-bg);
+    color: var(--equals-text);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+button.equal:hover {
+    background: #b8441f;
+}
+
+/* Decimal button */
+button.decimal{
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 700;
+}
